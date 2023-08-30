@@ -6,15 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularProject.Src.Core.Application.Services
+namespace AngularProject.Src.Infra.Database.Repository.User
 {
-    public class UserServices : IUserServices
+    public class UserRepository: IUserRepository
     {
-        private readonly IUserRepository _repository;
-        public UserServices(IUserRepository repository)
+        private readonly AngularProjectDbContext _dbContext;
+        public UserRepository(AngularProjectDbContext dbContext)
         {
-            _repository = repository;
+            _dbContext = dbContext;
         }
+
         public Task DeleteUser(int id)
         {
             throw new NotImplementedException();
