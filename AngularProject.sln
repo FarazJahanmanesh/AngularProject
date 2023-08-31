@@ -11,13 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EndPoint", "EndPoint", "{D6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{93D658DB-E8AF-44CD-956E-A6111B82AA1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularProject.Src.Infra.Database", "AngularProject.Infra.Database\AngularProject.Src.Infra.Database.csproj", "{89EE94D7-B763-4F57-B815-C2A57A6B2ADB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularProject.Src.Infra.Database", "AngularProject.Infra.Database\AngularProject.Src.Infra.Database.csproj", "{89EE94D7-B763-4F57-B815-C2A57A6B2ADB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularProject.Src.Core.Domain", "AngularProject.Core.Domain\AngularProject.Src.Core.Domain.csproj", "{A89DB594-D693-4EB5-A038-4AD9891CC910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularProject.Src.Core.Domain", "AngularProject.Core.Domain\AngularProject.Src.Core.Domain.csproj", "{A89DB594-D693-4EB5-A038-4AD9891CC910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularProject.Src.EndPoint.Api", "AngularProject.EndPoint.Api\AngularProject.Src.EndPoint.Api.csproj", "{9E1B2DD0-73D8-4D82-AE89-882CF41094C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularProject.Src.EndPoint.Api", "AngularProject.EndPoint.Api\AngularProject.Src.EndPoint.Api.csproj", "{9E1B2DD0-73D8-4D82-AE89-882CF41094C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularProject.Src.Core.Application", "AngularProject.Src.Core.Application\AngularProject.Src.Core.Application.csproj", "{339C39E9-3A9D-4880-9F3B-A327CC548A59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularProject.Src.Core.Application", "AngularProject.Src.Core.Application\AngularProject.Src.Core.Application.csproj", "{339C39E9-3A9D-4880-9F3B-A327CC548A59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGetWay", "ApiGetWay", "{87FF051F-AAD9-4843-A766-976F1F5A6A3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularProject.Src.Api.ApiGetWay.OcelotGetWay", "AngularProject.Src.Api.ApiGetWay.OcelotGetWay\AngularProject.Src.Api.ApiGetWay.OcelotGetWay.csproj", "{55FAA6B9-EF2F-4019-8E91-B56DC500BB06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularProject.Src.EndPoint.ExternalApi", "AngularProject.Src.EndPoint.ExternalApi\AngularProject.Src.EndPoint.ExternalApi.csproj", "{0E2EC4A9-5F53-4057-A2C0-073B7766CF51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +47,14 @@ Global
 		{339C39E9-3A9D-4880-9F3B-A327CC548A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{339C39E9-3A9D-4880-9F3B-A327CC548A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{339C39E9-3A9D-4880-9F3B-A327CC548A59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55FAA6B9-EF2F-4019-8E91-B56DC500BB06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55FAA6B9-EF2F-4019-8E91-B56DC500BB06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55FAA6B9-EF2F-4019-8E91-B56DC500BB06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55FAA6B9-EF2F-4019-8E91-B56DC500BB06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E2EC4A9-5F53-4057-A2C0-073B7766CF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E2EC4A9-5F53-4057-A2C0-073B7766CF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E2EC4A9-5F53-4057-A2C0-073B7766CF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E2EC4A9-5F53-4057-A2C0-073B7766CF51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +67,9 @@ Global
 		{A89DB594-D693-4EB5-A038-4AD9891CC910} = {ED2D206C-349B-4F9D-B28C-396D8C2E6513}
 		{9E1B2DD0-73D8-4D82-AE89-882CF41094C5} = {D6228CAE-78ED-4845-9DE7-C875287376E3}
 		{339C39E9-3A9D-4880-9F3B-A327CC548A59} = {ED2D206C-349B-4F9D-B28C-396D8C2E6513}
+		{87FF051F-AAD9-4843-A766-976F1F5A6A3A} = {ED0FB5B9-8DE8-4234-8F69-0A401D8D6B0A}
+		{55FAA6B9-EF2F-4019-8E91-B56DC500BB06} = {87FF051F-AAD9-4843-A766-976F1F5A6A3A}
+		{0E2EC4A9-5F53-4057-A2C0-073B7766CF51} = {D6228CAE-78ED-4845-9DE7-C875287376E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60AFD071-D7DC-4534-A1DA-21E081C4395F}
