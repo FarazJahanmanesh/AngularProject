@@ -1,5 +1,7 @@
 ﻿using AngularProject.Src.Core.Domain.Contracts;
 using AngularProject.Src.Core.Domain.Dtos.User;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,10 @@ namespace AngularProject.Src.Infra.Database.Repository.User
     public class UserRepository: IUserRepository
     {
         private readonly AngularProjectDbContext _dbContext;
-        public UserRepository(AngularProjectDbContext dbContext)
+        private readonly IMapper _mapper;
+        public UserRepository(AngularProjectDbContext dbContext, IMapper mapper)
         {
+            _mapper=mapper;
             _dbContext = dbContext;
         }
 
