@@ -16,27 +16,27 @@ namespace AngularProject.Src.Infra.Database.Repository.User
             _dbContext = dbContext;
         }
 
-        public Task DeleteUser(int id)
+        public async Task DeleteUser(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<GetAllUserDetailDto> GetAllUser()
+        public async Task<GetAllUserDetailDto> GetAllUser()
         {
             throw new NotImplementedException();
         }
 
-        public Task<GetUserByIdDetailDto> GetUserById(int id)
+        public async Task<GetUserByIdDetailDto> GetUserById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task PostUser()
+        public async Task PostUser()
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateUser()
+        public async Task UpdateUser()
         {
             throw new NotImplementedException();
         }

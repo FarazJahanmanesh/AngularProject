@@ -15,29 +15,29 @@ namespace AngularProject.Src.Core.Application.Services
         {
             _repository = repository;
         }
-        public Task DeleteUser(int id)
+        public async Task DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            await _repository.DeleteUser(id);
         }
 
-        public Task<GetAllUserDetailDto> GetAllUser()
+        public async Task<GetAllUserDetailDto> GetAllUser()
         {
-            throw new NotImplementedException();
+            return await _repository.GetAllUser();
         }
 
-        public Task<GetUserByIdDetailDto> GetUserById(int id)
+        public async Task<GetUserByIdDetailDto> GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.GetUserById(id);
         }
 
-        public Task PostUser()
+        public async Task PostUser()
         {
-            throw new NotImplementedException();
+            await _repository.PostUser();
         }
 
-        public Task UpdateUser()
+        public async Task UpdateUser()
         {
-            throw new NotImplementedException();
+            await _repository.UpdateUser();
         }
     }
 }
