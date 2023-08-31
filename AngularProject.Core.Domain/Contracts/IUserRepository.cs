@@ -9,10 +9,10 @@ namespace AngularProject.Src.Core.Domain.Contracts
 {
     public interface IUserRepository
     {
-        public Task<GetAllUserDetailDto> GetAllUser();
+        public Task<List<GetAllUserDetailDto>> GetAllUser();
         public Task<GetUserByIdDetailDto> GetUserById(int id);
-        public Task PostUser();
-        public Task UpdateUser();
+        public Task PostUser(PostUserDetailDto postUser);
+        public Task UpdateUser(UpdateUserDetailDto updateUser);
         public Task DeleteUser(int id);
     }
 }

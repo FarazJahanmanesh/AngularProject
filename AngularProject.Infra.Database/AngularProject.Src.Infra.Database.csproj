@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AngularProject.Core.Domain\AngularProject.Src.Core.Domain.csproj" />
     <ProjectReference Include="..\AngularProject.Src.Core.Application\AngularProject.Src.Core.Application.csproj" />
   </ItemGroup>
 

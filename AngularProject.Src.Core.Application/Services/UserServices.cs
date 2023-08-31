@@ -20,7 +20,7 @@ namespace AngularProject.Src.Core.Application.Services
             await _repository.DeleteUser(id);
         }
 
-        public async Task<GetAllUserDetailDto> GetAllUser()
+        public async Task<List<GetAllUserDetailDto>> GetAllUser()
         {
             return await _repository.GetAllUser();
         }
@@ -30,14 +30,14 @@ namespace AngularProject.Src.Core.Application.Services
             return await _repository.GetUserById(id);
         }
 
-        public async Task PostUser()
+        public async Task PostUser(PostUserDetailDto postUser)
         {
-            await _repository.PostUser();
+            await _repository.PostUser(postUser);
         }
 
-        public async Task UpdateUser()
+        public async Task UpdateUser(UpdateUserDetailDto updateUser)
         {
-            await _repository.UpdateUser();
+            await _repository.UpdateUser(updateUser);
         }
     }
 }
