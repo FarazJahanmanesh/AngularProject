@@ -1,6 +1,8 @@
 ﻿using AngularProject.Src.Core.Domain.Contracts;
 using AngularProject.Src.Core.Domain.Dtos.User;
+using AngularProject.Src.Core.Domain.Entities;
 using AngularProject.Src.EndPoint.Api.Model.Request;
+using AngularProject.Src.EndPoint.Api.Model.Response;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,15 +24,17 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
         [Route("GetListUser")]
         public async Task<IActionResult> GetListUser()
         {
-            await _services.GetAllUser();
-            return Ok();
+            var users  = await _services.GetAllUser();
+            var response = _mapper.Map<GetAllUserResponse>(users);
+            return Ok(response);
         }
         [HttpGet]
         [Route("GetUserById/{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
-            await _services.GetUserById(id);
-            return Ok();
+            var user = await _services.GetUserById(id);
+            var response = _mapper.Map<GetUserByIdResponse>(user);
+            return Ok(response);
         }
         [HttpPost]
         [Route("CreateUser")]

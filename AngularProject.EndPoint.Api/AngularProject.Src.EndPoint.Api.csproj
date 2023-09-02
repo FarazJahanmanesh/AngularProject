@@ -21,8 +21,4 @@
     <ProjectReference Include="..\AngularProject.Src.Core.Application\AngularProject.Src.Core.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Model\Response\" />
-  </ItemGroup>
-
 </Project>
