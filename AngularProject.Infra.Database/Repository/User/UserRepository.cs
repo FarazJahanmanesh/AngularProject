@@ -25,7 +25,7 @@ namespace AngularProject.Src.Infra.Database.Repository.User
 
         public async Task<List<GetAllUserDetailDto>> GetAllUser()
         {
-            var usrs = await _dbContext.Users.AsNoTracking().ToListAsync();
+            var usrs = await _dbContext.Users.AsNoTracking().Where(c=>c.IsDelete==false).ToListAsync();
             return _mapper.Map<List<GetAllUserDetailDto>>(usrs);
         }
 
