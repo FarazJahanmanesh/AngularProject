@@ -11,6 +11,7 @@ namespace AngularProject.Src.Core.Application.Helpers
 {
     public class AutoMapperConfiguration:Profile
     {
+        #region add mapp in ctor
         public AutoMapperConfiguration() 
         {
             CreateMap<User, GetAllUserDetailDto>().ReverseMap();
@@ -18,5 +19,6 @@ namespace AngularProject.Src.Core.Application.Helpers
             CreateMap<User, PostUserDetailDto>().ReverseMap();
             CreateMap<User, UpdateUserDetailDto>().ReverseMap();
         }
+        #endregion
     }
 }

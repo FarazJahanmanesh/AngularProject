@@ -8,6 +8,7 @@ namespace AngularProject.Src.Infra.Database.Repository.User
 {
     public class UserRepository: IUserRepository
     {
+        #region ctor
         private readonly AngularProjectDbContext _dbContext;
         private readonly IMapper _mapper;
         public UserRepository(AngularProjectDbContext dbContext, IMapper mapper)
@@ -15,7 +16,9 @@ namespace AngularProject.Src.Infra.Database.Repository.User
             _mapper=mapper;
             _dbContext = dbContext;
         }
+        #endregion
 
+        #region crud
         public async Task DeleteUser(int id)
         {
             var user = await _dbContext.Users.FindAsync(id);
@@ -52,5 +55,6 @@ namespace AngularProject.Src.Infra.Database.Repository.User
             user.NationalCode=updateUser.NationalCode;
             await _dbContext.SaveChangesAsync();
         }
+        #endregion
     }
 }

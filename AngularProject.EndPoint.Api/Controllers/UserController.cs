@@ -11,17 +11,20 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        #region ctor
         private readonly IUserServices _services;
         public UserController(IUserServices services)
         {
             _services = services;
         }
+        #endregion
+
+        #region controllers
         [HttpGet]
         [Route("GetListUser")]
         public async Task<IActionResult> GetListUser()
         {
             var users  = await _services.GetAllUser();
-            //var response = _mapper.Map<GetAllUserResponse>(users);
             return Ok(users);
         }
         [HttpGet]
@@ -29,7 +32,6 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
         public async Task<IActionResult> GetUserById(int id)
         {
             var user = await _services.GetUserById(id);
-            //var response = _mapper.Map<GetUserByIdResponse>(user);
             return Ok(user);
         }
         [HttpPost]
@@ -54,5 +56,6 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             await _services.UpdateUser(request);
             return Ok();
         }
+        #endregion
     }
 }

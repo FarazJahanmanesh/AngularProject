@@ -10,11 +10,15 @@ namespace AngularProject.Src.Core.Application.Services
 {
     public class UserServices : IUserServices
     {
+        #region ctor
         private readonly IUserRepository _repository;
         public UserServices(IUserRepository repository)
         {
             _repository = repository;
         }
+        #endregion
+
+        #region crud
         public async Task DeleteUser(int id)
         {
             await _repository.DeleteUser(id);
@@ -39,5 +43,6 @@ namespace AngularProject.Src.Core.Application.Services
         {
             await _repository.UpdateUser(updateUser);
         }
+        #endregion
     }
 }

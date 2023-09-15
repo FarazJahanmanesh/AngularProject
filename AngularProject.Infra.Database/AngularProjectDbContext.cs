@@ -10,9 +10,14 @@ namespace AngularProject.Src.Infra.Database
 {
     public class AngularProjectDbContext : DbContext
     {
+        #region ctor
         public AngularProjectDbContext(DbContextOptions<AngularProjectDbContext> options):base(options)
         {
         }
+        #endregion
+
+        #region Tables
         public DbSet<User> Users { get; set; }
+        #endregion
     }
 }
