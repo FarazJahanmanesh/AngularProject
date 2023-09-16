@@ -4,6 +4,7 @@ using AngularProject.Src.Core.Domain.Contracts;
 using AngularProject.Src.Infra.Database;
 using Microsoft.EntityFrameworkCore;
 using AngularProject.Src.Infra.Database.Repository.User;
+using IOC.Dependencies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,14 +14,19 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#region add dbcontext config
 var connectionString = builder.Configuration.GetConnectionString("AngularProject");
 builder.Services.AddDbContext<AngularProjectDbContext>(options => options.UseSqlServer(connectionString));
+#endregion
 
+#region add config for automappe
 builder.Services.AddAutoMapper(typeof(AppAutoMapper.AutoMapperConfiguration).Assembly);
+#endregion
 
-builder.Services.AddScoped<IUserServices, UserServices>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-
+#region add di
+builder.Services.RegisterServices();
+#endregion
 
 var app = builder.Build();
 
