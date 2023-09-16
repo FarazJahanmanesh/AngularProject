@@ -64,7 +64,7 @@ namespace AngularProject.Src.Core.Application.Services
         {
             try
             {
-                await _repository.UpdateUser(updateUser);
+                await _repository.UpdateUser(userId,userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
             }
             catch (Exception ex)
             {
