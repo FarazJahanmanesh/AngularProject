@@ -1,6 +1,7 @@
 ﻿using AngularProject.Src.Core.Domain.Contracts;
 using AngularProject.Src.Core.Domain.Dtos.User;
 using AngularProject.Src.Core.Domain.Entities;
+using AngularProject.Src.EndPoint.Api.Models.Request;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,36 +25,76 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
         [Route("GetListUser")]
         public async Task<IActionResult> GetListUser()
         {
-            var users  = await _services.GetAllUser();
-            return Ok(users);
+            try
+            {
+                var users = await _services.GetAllUser();
+                return Ok(users);
+            }
+            catch
+            {
+
+            }
+            return Ok();
         }
         [HttpGet]
         [Route("GetUserById/{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
-            var user = await _services.GetUserById(id);
-            return Ok(user);
+            try
+            {
+                var user = await _services.GetUserById(id);
+                return Ok(user);
+            }
+            catch
+            {
+
+            }
+            return Ok();
         }
         [HttpPost]
         [Route("CreateUser")]
-        public async Task<IActionResult> CreateUser([FromBody] PostUserDetailDto request)
+        public async Task<IActionResult> CreateUser([FromBody] PostUserRequest request)
         {
-            await _services.PostUser(request);
+            try
+            {
+                await _services.PostUser(request.UserName, request.UserEmail, request.NationalCode, request.UserPasswordHash, request.PhoneNumber);
+                return Ok();
+            }
+            catch
+            {
+
+            }
             return Ok();
         }
         [HttpDelete]
         [Route("DeleteUser/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            await _services.DeleteUser(id);
+            try
+            {
+                await _services.DeleteUser(id);
+                return Ok();
+            }
+            catch
+            {
+
+            }
             return Ok();
         }
 
         [HttpPut]
         [Route("UpdateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDetailDto request)
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request)
         {
-            await _services.UpdateUser(request);
+            try
+            {
+                await _services.UpdateUser(request.UserID,request.UserName,request.UserEmail,request.NationalCode,request.UserPasswordHash,request.PhoneNumber);
+                return Ok();
+            }
+            catch
+            {
+
+            }
             return Ok();
         }
         #endregion

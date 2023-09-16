@@ -26,22 +26,50 @@ namespace AngularProject.Src.Core.Application.Services
 
         public async Task<List<GetAllUserDetailDto>> GetAllUser()
         {
-            return await _repository.GetAllUser();
+            try
+            {
+                return await _repository.GetAllUser();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<GetUserByIdDetailDto> GetUserById(int id)
         {
-            return await _repository.GetUserById(id);
+            try
+            {
+                return await _repository.GetUserById(id);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task PostUser(PostUserDetailDto postUser)
+        public async Task PostUser(string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
-            await _repository.PostUser(postUser);
+            try
+            {
+                await _repository.PostUser(userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task UpdateUser(UpdateUserDetailDto updateUser)
+        public async Task UpdateUser(int userId, string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
-            await _repository.UpdateUser(updateUser);
+            try
+            {
+                await _repository.UpdateUser(updateUser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
     }

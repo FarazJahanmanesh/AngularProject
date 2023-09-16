@@ -27,4 +27,8 @@
     <ProjectReference Include="..\IOC\IOC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Response\" />
+  </ItemGroup>
+
 </Project>

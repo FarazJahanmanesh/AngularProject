@@ -21,39 +21,82 @@ namespace AngularProject.Src.Infra.Database.Repository.User
         #region crud
         public async Task DeleteUser(int id)
         {
-            var user = await _dbContext.Users.FindAsync(id);
-            user.IsDelete = true;
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var user = await _dbContext.Users.FindAsync(id);
+                user.IsDelete = true;
+                await _dbContext.SaveChangesAsync();
+            }
+            catch
+            {
+
+            }
         }
 
         public async Task<List<GetAllUserDetailDto>> GetAllUser()
         {
-            var usrs = await _dbContext.Users.AsNoTracking().Where(c=>c.IsDelete==false).ToListAsync();
-            return _mapper.Map<List<GetAllUserDetailDto>>(usrs);
+            try
+            {
+                var usrs = await _dbContext.Users.AsNoTracking().Where(c => c.IsDelete == false).ToListAsync();
+                return _mapper.Map<List<GetAllUserDetailDto>>(usrs);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<GetUserByIdDetailDto> GetUserById(int id)
         {
-            var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(c=>c.Id==id);
-            return _mapper.Map<GetUserByIdDetailDto>(user);
+            try
+            {
+                var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+                return _mapper.Map<GetUserByIdDetailDto>(user);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task PostUser(PostUserDetailDto postUser)
+        public async Task PostUser(string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
-            var newUser = _mapper.Map<UserEntitiy.User>(postUser);
-            await _dbContext.Users.AddAsync(newUser);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var postUser = new PostUserDetailDto 
+                {
+                    NationalCode = nationalCode,
+                    PhoneNumber = phoneNumber,
+                    UserEmail = userEmail,
+                    UserName = userName,
+                    UserPasswordHash = userPasswordHash
+                } ;
+                var newUser = _mapper.Map<UserEntitiy.User>(postUser);
+                await _dbContext.Users.AddAsync(newUser);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
-        public async Task UpdateUser(UpdateUserDetailDto updateUser)
+        public async Task UpdateUser(int userId, string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
-            var user = await _dbContext.Users.FindAsync(updateUser.UserID);
-            user.PhoneNumber = updateUser.PhoneNumber;
-            user.UserName=updateUser.UserName;
-            user.UserEmail=updateUser.UserEmail;
-            user.UserPasswordHash= updateUser.UserPasswordHash;
-            user.NationalCode=updateUser.NationalCode;
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var user = await _dbContext.Users.FindAsync(userId);
+                user.PhoneNumber = phoneNumber;
+                user.UserName = userName;
+                user.UserEmail = userEmail;
+                user.UserPasswordHash = userPasswordHash;
+                user.NationalCode = nationalCode;
+                await _dbContext.SaveChangesAsync();
+            }
+            catch 
+            {
+
+            }
         }
         #endregion
     }
