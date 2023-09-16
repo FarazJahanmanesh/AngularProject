@@ -8,10 +8,8 @@ namespace AngularProject.Src.Core.Domain.Dtos.User
 {
     public class GetUserByIdDetailDto
     {
-        public int UserID { get; set; }
         public string UserName { get; set; }
         public string NationalCode { get; set; }
         public string PhoneNumber { get; set; }
-        public bool IsDelete { get; set; }
     }
 }
