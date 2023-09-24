@@ -32,7 +32,6 @@ namespace AngularProject.Src.Infra.Database.Repository.User
 
             }
         }
-
         public async Task<List<GetAllUserDetailDto>> GetAllUser()
         {
             try

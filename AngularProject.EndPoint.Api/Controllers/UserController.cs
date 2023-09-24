@@ -1,7 +1,9 @@
 ﻿using AngularProject.Src.Core.Domain.Contracts;
 using AngularProject.Src.Core.Domain.Dtos.User;
 using AngularProject.Src.Core.Domain.Entities;
+using AngularProject.Src.EndPoint.Api.Models;
 using AngularProject.Src.EndPoint.Api.Models.Request;
+using AngularProject.Src.EndPoint.Api.Models.Response;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +27,7 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
         [Route("GetListUser")]
         public async Task<IActionResult> GetListUser()
         {
+            var response = new BaseUserResponse<List<GetListUserResponse>>();
             try
             {
                 var users = await _services.GetAllUser();
@@ -34,12 +37,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             {
 
             }
-            return Ok();
+            return Ok(response);
         }
         [HttpGet]
         [Route("GetUserById/{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
+            var response = new BaseUserResponse<GetUserByIdResponse>();
             try
             {
                 var user = await _services.GetUserById(id);
@@ -49,12 +53,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             {
 
             }
-            return Ok();
+            return Ok(response);
         }
         [HttpPost]
         [Route("CreateUser")]
         public async Task<IActionResult> CreateUser([FromBody] PostUserRequest request)
         {
+            var response = new BaseUserResponse<CreateUserResponse>();
             try
             {
                 await _services.PostUser(request.UserName, request.UserEmail, request.NationalCode, request.UserPasswordHash, request.PhoneNumber);
@@ -64,12 +69,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             {
 
             }
-            return Ok();
+            return Ok(response);
         }
         [HttpDelete]
         [Route("DeleteUser/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
+            var response = new BaseUserResponse<DeleteUserResponse>();
             try
             {
                 await _services.DeleteUser(id);
@@ -79,13 +85,14 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             {
 
             }
-            return Ok();
+            return Ok(response);
         }
 
         [HttpPut]
         [Route("UpdateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request)
         {
+            var response = new BaseUserResponse<UpdateUserResponse>();
             try
             {
                 await _services.UpdateUser(request.UserID,request.UserName,request.UserEmail,request.NationalCode,request.UserPasswordHash,request.PhoneNumber);
@@ -95,7 +102,7 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             {
 
             }
-            return Ok();
+            return Ok(response);
         }
         #endregion
     }
