@@ -35,7 +35,8 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             }
             catch
             {
-
+                response.Status = 403;
+                response.Message = "error";
             }
             return Ok(response);
         }
@@ -51,7 +52,8 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             }
             catch
             {
-
+                response.Status = 403;
+                response.Message = "error";
             }
             return Ok(response);
         }
@@ -59,7 +61,7 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
         [Route("CreateUser")]
         public async Task<IActionResult> CreateUser([FromBody] PostUserRequest request)
         {
-            var response = new BaseUserResponse<CreateUserResponse>();
+            var response = new BaseUserResponse();
             try
             {
                 await _services.PostUser(request.UserName, request.UserEmail, request.NationalCode, request.UserPasswordHash, request.PhoneNumber);
@@ -67,7 +69,8 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             }
             catch
             {
-
+                response.Status = 403;
+                response.Message = "error";
             }
             return Ok(response);
         }
@@ -75,7 +78,7 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
         [Route("DeleteUser/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var response = new BaseUserResponse<DeleteUserResponse>();
+            var response = new BaseUserResponse();
             try
             {
                 await _services.DeleteUser(id);
@@ -83,7 +86,8 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             }
             catch
             {
-
+                response.Status = 403;
+                response.Message = "error";
             }
             return Ok(response);
         }
@@ -92,7 +96,7 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
         [Route("UpdateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request)
         {
-            var response = new BaseUserResponse<UpdateUserResponse>();
+            var response = new BaseUserResponse();
             try
             {
                 await _services.UpdateUser(request.UserID,request.UserName,request.UserEmail,request.NationalCode,request.UserPasswordHash,request.PhoneNumber);
@@ -100,7 +104,8 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             }
             catch
             {
-
+                response.Status = 403;
+                response.Message = "error";
             }
             return Ok(response);
         }
