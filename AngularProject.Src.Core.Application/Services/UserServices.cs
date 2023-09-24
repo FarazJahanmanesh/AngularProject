@@ -19,9 +19,17 @@ namespace AngularProject.Src.Core.Application.Services
         #endregion
 
         #region crud
-        public async Task DeleteUser(int id)
+        public async Task<bool> DeleteUser(int id)
         {
-            await _repository.DeleteUser(id);
+            try
+            {
+                var response = await _repository.DeleteUser(id);
+                return response;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<List<GetAllUserDetailDto>> GetAllUser()
@@ -48,11 +56,11 @@ namespace AngularProject.Src.Core.Application.Services
             }
         }
 
-        public async Task PostUser(string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
+        public async Task<bool> PostUser(string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
             try
             {
-                await _repository.PostUser(userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
+                return await _repository.PostUser(userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
             }
             catch (Exception ex)
             {
@@ -60,11 +68,11 @@ namespace AngularProject.Src.Core.Application.Services
             }
         }
 
-        public async Task UpdateUser(int userId, string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
+        public async Task<bool> UpdateUser(int userId, string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
             try
             {
-                await _repository.UpdateUser(userId,userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
+                return await _repository.UpdateUser(userId,userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
             }
             catch (Exception ex)
             {

@@ -19,17 +19,18 @@ namespace AngularProject.Src.Infra.Database.Repository.User
         #endregion
 
         #region crud
-        public async Task DeleteUser(int id)
+        public async Task<bool> DeleteUser(int id)
         {
             try
             {
                 var user = await _dbContext.Users.FindAsync(id);
                 user.IsDelete = true;
                 await _dbContext.SaveChangesAsync();
+                return true;
             }
             catch
             {
-
+                return false;
             }
         }
         public async Task<List<GetAllUserDetailDto>> GetAllUser()
@@ -41,7 +42,7 @@ namespace AngularProject.Src.Infra.Database.Repository.User
             }
             catch(Exception ex)
             {
-                throw ex;
+                return null;
             }
         }
 
@@ -54,11 +55,11 @@ namespace AngularProject.Src.Infra.Database.Repository.User
             }
             catch(Exception ex)
             {
-                throw ex;
+                return null;
             }
         }
 
-        public async Task PostUser(string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
+        public async Task<bool> PostUser(string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
             try
             {
@@ -73,14 +74,15 @@ namespace AngularProject.Src.Infra.Database.Repository.User
                 var newUser = _mapper.Map<UserEntitiy.User>(postUser);
                 await _dbContext.Users.AddAsync(newUser);
                 await _dbContext.SaveChangesAsync();
+                return true;
             }
-            catch(Exception ex)
+            catch
             {
-
+                return false;
             }
         }
 
-        public async Task UpdateUser(int userId, string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
+        public async Task<bool> UpdateUser(int userId, string userName, string userEmail, string nationalCode, string userPasswordHash, string phoneNumber)
         {
             try
             {
@@ -91,10 +93,11 @@ namespace AngularProject.Src.Infra.Database.Repository.User
                 user.UserPasswordHash = userPasswordHash;
                 user.NationalCode = nationalCode;
                 await _dbContext.SaveChangesAsync();
+                return true;
             }
             catch 
             {
-
+                return false;
             }
         }
         #endregion

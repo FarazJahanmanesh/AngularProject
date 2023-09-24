@@ -31,7 +31,16 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             try
             {
                 var users = await _services.GetAllUser();
-                return Ok(users);
+                if(users != null)
+                {
+                    response.Data = users;
+                    return Ok(response);
+                }
+                else
+                {
+                    response.Status = 403;
+                    response.Message = "error";
+                }
             }
             catch
             {
@@ -48,6 +57,15 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             try
             {
                 var user = await _services.GetUserById(id);
+                if(user != null)
+                {
+
+                }
+                else
+                {
+                    response.Status = 403;
+                    response.Message = "error";
+                }
                 return Ok(user);
             }
             catch
@@ -64,8 +82,17 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             var response = new BaseUserResponse();
             try
             {
-                await _services.PostUser(request.UserName, request.UserEmail, request.NationalCode, request.UserPasswordHash, request.PhoneNumber);
-                return Ok();
+                var result = await _services.PostUser(request.UserName, request.UserEmail, request.NationalCode, request.UserPasswordHash, request.PhoneNumber);
+                if(result == true)
+                {
+                    response.Status = 200;
+                    response.Message = "ok";
+                }
+                else
+                {
+                    response.Status = 403;
+                    response.Message = "error";
+                }
             }
             catch
             {
@@ -81,8 +108,17 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             var response = new BaseUserResponse();
             try
             {
-                await _services.DeleteUser(id);
-                return Ok();
+                var result = await _services.DeleteUser(id);
+                if (result==true)
+                {
+                    response.Status=200;
+                    response.Message = "ok";
+                }
+                else
+                {
+                    response.Status = 403;
+                    response.Message = "error";
+                }
             }
             catch
             {
@@ -99,8 +135,17 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
             var response = new BaseUserResponse();
             try
             {
-                await _services.UpdateUser(request.UserID,request.UserName,request.UserEmail,request.NationalCode,request.UserPasswordHash,request.PhoneNumber);
-                return Ok();
+                var result = await _services.UpdateUser(request.UserID,request.UserName,request.UserEmail,request.NationalCode,request.UserPasswordHash,request.PhoneNumber);
+                if(result==true)
+                {
+                    response.Status = 200;
+                    response.Message = "ok";
+                }
+                else
+                {
+                    response.Status = 403;
+                    response.Message = "error";
+                }
             }
             catch
             {

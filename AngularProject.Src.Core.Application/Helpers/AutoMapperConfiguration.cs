@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AngularProject.Src.Core.Domain.Dtos.User;
 using AngularProject.Src.Core.Domain.Entities;
+using AngularProject.Src.Core.Domain.Entities.Response;
 using AutoMapper;
 
 namespace AngularProject.Src.Core.Application.Helpers
@@ -18,6 +19,8 @@ namespace AngularProject.Src.Core.Application.Helpers
             CreateMap<User, GetUserByIdDetailDto>().ReverseMap();
             CreateMap<User, PostUserDetailDto>().ReverseMap();
             CreateMap<User, UpdateUserDetailDto>().ReverseMap();
+            CreateMap<GetAllUserDetailDto, GetListUserResponse>().ReverseMap();
+            CreateMap<GetUserByIdDetailDto, GetUserByIdResponse>().ReverseMap();
         }
         #endregion
     }
