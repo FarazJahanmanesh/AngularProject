@@ -39,13 +39,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
                 }
                 else
                 {
-                    response.Status = 403;
+                    response.Status = 404;
                     response.Message = StaticStrings.Get_List_User_Not_Successfuly;
                 }
             }
             catch
             {
-                response.Status = 403;
+                response.Status = 503;
                 response.Message = StaticStrings.Problem_In_Calling_Service;
             }
             return Ok(response);
@@ -66,13 +66,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
                 }
                 else
                 {
-                    response.Status = 403;
+                    response.Status = 404;
                     response.Message = StaticStrings.Get_User_By_Id_Not_Successfuly;
                 }
             }
             catch
             {
-                response.Status = 403;
+                response.Status = 503;
                 response.Message = StaticStrings.Problem_In_Calling_Service;
             }
             return Ok(response);
@@ -92,13 +92,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
                 }
                 else
                 {
-                    response.Status = 403;
+                    response.Status = 400;
                     response.Message = StaticStrings.Create_User_Not_Successfuly;
                 }
             }
             catch
             {
-                response.Status = 403;
+                response.Status = 503;
                 response.Message = StaticStrings.Problem_In_Calling_Service;
             }
             return Ok(response);
@@ -118,13 +118,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
                 }
                 else
                 {
-                    response.Status = 403;
+                    response.Status = 400;
                     response.Message = StaticStrings.Delete_User_Not_Successfuly;
                 }
             }
             catch
             {
-                response.Status = 403;
+                response.Status = 503;
                 response.Message = StaticStrings.Problem_In_Calling_Service;
             }
             return Ok(response);
@@ -145,13 +145,13 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
                 }
                 else
                 {
-                    response.Status = 403;
+                    response.Status = 400;
                     response.Message = StaticStrings.Update_User_Not_Successfuly;
                 }
             }
             catch
             {
-                response.Status = 403;
+                response.Status = 503;
                 response.Message = StaticStrings.Problem_In_Calling_Service;
             }
             return Ok(response);
