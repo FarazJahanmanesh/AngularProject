@@ -1,9 +1,8 @@
 ﻿using AngularProject.Src.Core.Domain.Contracts;
 using AngularProject.Src.Core.Domain.Dtos.User;
 using AngularProject.Src.Core.Domain.Entities;
-using AngularProject.Src.EndPoint.Api.Models;
-using AngularProject.Src.EndPoint.Api.Models.Request;
-using AngularProject.Src.EndPoint.Api.Models.Response;
+using AngularProject.Src.Core.Domain.Entities.Request;
+using AngularProject.Src.Core.Domain.Entities.Response;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +15,11 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
     {
         #region ctor
         private readonly IUserServices _services;
-        public UserController(IUserServices services)
+        private readonly IMapper _mapper;
+        public UserController(IUserServices services, IMapper mapper)
         {
             _services = services;
+            _mapper = mapper;
         }
         #endregion
 
@@ -33,8 +34,9 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
                 var users = await _services.GetAllUser();
                 if(users != null)
                 {
-                    response.Data = users;
-                    return Ok(response);
+                    response.Data = _mapper.Map<List<GetListUserResponse>>(users);
+                    response.Status = 200;
+                    response.Message = "ok";
                 }
                 else
                 {
@@ -59,14 +61,15 @@ namespace AngularProject.Src.EndPoint.Api.Controllers
                 var user = await _services.GetUserById(id);
                 if(user != null)
                 {
-
+                    response.Data = _mapper.Map<GetUserByIdResponse>(user);
+                    response.Status = 200;
+                    response.Message = "ok";
                 }
                 else
                 {
                     response.Status = 403;
                     response.Message = "error";
                 }
-                return Ok(user);
             }
             catch
             {
