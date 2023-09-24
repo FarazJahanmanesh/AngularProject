@@ -1,4 +1,5 @@
-﻿using AngularProject.Src.Core.Domain.Contracts;
+﻿using AngularProject.Src.Core.Application.Helpers;
+using AngularProject.Src.Core.Domain.Contracts;
 using AngularProject.Src.Core.Domain.Dtos.User;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace AngularProject.Src.Core.Application.Services
         {
             try
             {
-                return await _repository.PostUser(userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
+                return await _repository.PostUser(userName,userEmail,nationalCode,userPasswordHash.SHA1HashCode(), phoneNumber);
             }
             catch (Exception ex)
             {
@@ -72,7 +73,7 @@ namespace AngularProject.Src.Core.Application.Services
         {
             try
             {
-                return await _repository.UpdateUser(userId,userName,userEmail,nationalCode,userPasswordHash,phoneNumber);
+                return await _repository.UpdateUser(userId,userName,userEmail,nationalCode,userPasswordHash.SHA1HashCode(), phoneNumber);
             }
             catch (Exception ex)
             {
