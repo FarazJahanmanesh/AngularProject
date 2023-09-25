@@ -29,7 +29,7 @@ namespace AngularProject.Src.Core.Application.Services
             }
             catch(Exception ex)
             {
-                throw ex;
+                return false;
             }
         }
 
@@ -41,7 +41,7 @@ namespace AngularProject.Src.Core.Application.Services
             }
             catch(Exception ex)
             {
-                throw ex;
+                return null;
             }
         }
 
@@ -53,7 +53,7 @@ namespace AngularProject.Src.Core.Application.Services
             }
             catch(Exception ex)
             {
-                throw ex;
+                return null;
             }
         }
 
@@ -65,7 +65,7 @@ namespace AngularProject.Src.Core.Application.Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
             }
         }
 
@@ -77,7 +77,7 @@ namespace AngularProject.Src.Core.Application.Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
             }
         }
         #endregion

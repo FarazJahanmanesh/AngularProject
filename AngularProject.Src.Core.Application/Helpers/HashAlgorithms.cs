@@ -9,6 +9,7 @@ namespace AngularProject.Src.Core.Application.Helpers
 {
     public static class HashAlgorithms
     {
+        #region SHA256
         public static string SHA256HashCode(this string input)
         {
             var crypt = new System.Security.Cryptography.SHA256Managed();
@@ -20,6 +21,9 @@ namespace AngularProject.Src.Core.Application.Helpers
             }
             return hash.ToString();
         }
+        #endregion
+
+        #region SHA512
         public static string SHA512HashCode(this string input)
         {
             var bytes = System.Text.Encoding.UTF8.GetBytes(input);
@@ -32,6 +36,9 @@ namespace AngularProject.Src.Core.Application.Helpers
                 return hashedInputStringBuilder.ToString();
             }
         }
+        #endregion
+
+        #region SHA1
         public static string SHA1HashCode(this string input)
         {
             var sha1 = new SHA1Managed();
@@ -45,5 +52,6 @@ namespace AngularProject.Src.Core.Application.Helpers
             var hashString = sb.ToString();
             return hashString;
         }
+        #endregion
     }
 }
