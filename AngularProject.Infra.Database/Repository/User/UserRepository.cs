@@ -37,7 +37,15 @@ namespace AngularProject.Src.Infra.Database.Repository.User
             {
                 var user = await _dbContext.Users.FindAsync(id);
                 user.IsDelete = true;
-                await SaveChangesAsync();
+                var result = await SaveChangesAsync();
+                if(result==true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
                 return true;
             }
             catch
@@ -85,7 +93,15 @@ namespace AngularProject.Src.Infra.Database.Repository.User
                 } ;
                 var newUser = _mapper.Map<UserEntitiy.User>(postUser);
                 await _dbContext.Users.AddAsync(newUser);
-                await SaveChangesAsync();
+                var result = await SaveChangesAsync();
+                if (result == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
                 return true;
             }
             catch
@@ -104,7 +120,15 @@ namespace AngularProject.Src.Infra.Database.Repository.User
                 user.UserEmail = userEmail;
                 user.UserPasswordHash = userPasswordHash;
                 user.NationalCode = nationalCode;
-                await SaveChangesAsync();
+                var result = await SaveChangesAsync();
+                if (result == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
                 return true;
             }
             catch 
