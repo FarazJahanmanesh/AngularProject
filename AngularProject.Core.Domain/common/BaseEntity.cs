@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularProject.Src.Core.Domain.Entities
+namespace AngularProject.Src.Core.Domain.common
 {
     public class BaseEntity<T>
     {
@@ -15,7 +15,7 @@ namespace AngularProject.Src.Core.Domain.Entities
         public T Id { get; set; }
         public bool IsDelete { get; set; }
     }
-    public class BaseEntity: BaseEntity<int>
+    public class BaseEntity : BaseEntity<int>
     {
     }
 }

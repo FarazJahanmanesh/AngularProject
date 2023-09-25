@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularProject.Src.Core.Domain.Entities
+namespace AngularProject.Src.Core.Domain.common
 {
     public static class StaticStrings
     {
