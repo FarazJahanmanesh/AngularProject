@@ -19,13 +19,25 @@ namespace AngularProject.Src.Infra.Database.Repository.User
         #endregion
 
         #region crud
+        private async Task<bool> SaveChangesAsync()
+        {
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public async Task<bool> DeleteUser(int id)
         {
             try
             {
                 var user = await _dbContext.Users.FindAsync(id);
                 user.IsDelete = true;
-                await _dbContext.SaveChangesAsync();
+                await SaveChangesAsync();
                 return true;
             }
             catch
@@ -73,7 +85,7 @@ namespace AngularProject.Src.Infra.Database.Repository.User
                 } ;
                 var newUser = _mapper.Map<UserEntitiy.User>(postUser);
                 await _dbContext.Users.AddAsync(newUser);
-                await _dbContext.SaveChangesAsync();
+                await SaveChangesAsync();
                 return true;
             }
             catch
@@ -92,7 +104,7 @@ namespace AngularProject.Src.Infra.Database.Repository.User
                 user.UserEmail = userEmail;
                 user.UserPasswordHash = userPasswordHash;
                 user.NationalCode = nationalCode;
-                await _dbContext.SaveChangesAsync();
+                await SaveChangesAsync();
                 return true;
             }
             catch 
