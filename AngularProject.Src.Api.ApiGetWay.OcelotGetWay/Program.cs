@@ -1,4 +1,3 @@
-using AngularProject.Src.Api.ApiGetWay.OcelotGetWay.Middlewares;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -23,7 +22,6 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors("MyCorsPolicy");
 app.MapGet("/", () => "Hello World!");
-app.UseMiddleware<AddIpAddressToHeaderMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
