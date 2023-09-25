@@ -1,3 +1,4 @@
+using AngularProject.Src.Api.ApiGetWay.OcelotGetWay.Middlewares;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -13,6 +14,7 @@ else
 {
     ocelotName = "ocelot.production.json";
 }
+builder.Configuration.AddJsonFile(ocelotName, optional: false, reloadOnChange: false);
 builder.Services.AddOcelot(builder.Configuration);
 builder.Services.AddCors(options =>
 {
@@ -21,6 +23,7 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors("MyCorsPolicy");
 app.MapGet("/", () => "Hello World!");
+app.UseMiddleware<AddIpAddressToHeaderMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
