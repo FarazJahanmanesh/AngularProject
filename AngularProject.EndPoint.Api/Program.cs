@@ -28,6 +28,20 @@ builder.Services.AddAutoMapper(typeof(AppAutoMapper.AutoMapperConfiguration).Ass
 builder.Services.RegisterServices();
 #endregion
 
+#region Add cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ClientPermission", policy =>
+    {
+        policy.AllowAnyHeader()
+            .AllowAnyMethod()
+            .SetIsOriginAllowed(_ => true)
+            .AllowCredentials();
+    });
+});
+
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,6 +52,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+#region add cors
+app.UseCors("ClientPermission");
+
+#endregion
 
 app.UseAuthorization();
 
