@@ -15,6 +15,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAnyHeaders",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 #region add dbcontext config
 var connectionString = builder.Configuration.GetConnectionString("AngularProject");
 builder.Services.AddDbContext<AngularProjectDbContext>(options => options.UseSqlServer(connectionString));
